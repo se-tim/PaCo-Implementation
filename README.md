@@ -1,2 +1,2 @@
-# BooPC-Implementation
-A proof-of-concept implementation of the BooPC bootstrapping procedure for CKKS.
+# PaCo Implementation
+A proof-of-concept implementation of the PaCo bootstrapping procedure for CKKS.
