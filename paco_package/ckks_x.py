@@ -37,29 +37,6 @@ class CKKS_x(CKKS):
         )
 
     @classmethod
-    def get_security(cls, check_primal_hybrid=False):
-        """
-        Use the LWE estimator to compute the security level.
-
-        Args:
-            check_primal_hybrid (bool, optional):
-                Whether to check the primal hybrid security level. Defaults to
-                False.
-
-        Returns:
-            float:
-                Logarithm (base 2) of estimated number of operations required
-                to break the scheme.
-        """
-        return super().get_security(
-            N=cls.N - cls.N // cls.h,
-            q=cls.moduli_boot[-2] ** 2,
-            sk_plus=cls.h - 1,
-            sk_minus=0,
-            check_primal_hybrid=check_primal_hybrid,
-        )
-
-    @classmethod
     def key_gen(cls, h=None, print_messages=False):
         """
         Generate the secret key, public key and evaluation key for the scheme.
@@ -95,6 +72,29 @@ class CKKS_x(CKKS):
         q = cls.moduli_boot[-2]  # Largest modulus for evaluation key
         P = cls.moduli_boot[-2]  # Extra factor added to evaluation key modulus
         super().key_gen(sk=sk, q=q, P=P, print_messages=print_messages)
+
+    @classmethod
+    def get_security(cls, check_primal_hybrid=False):
+        """
+        Use the LWE estimator to compute the security level.
+
+        Args:
+            check_primal_hybrid (bool, optional):
+                Whether to check the primal hybrid security level. Defaults to
+                False.
+
+        Returns:
+            float:
+                Logarithm (base 2) of estimated number of operations required
+                to break the scheme.
+        """
+        return super().get_security(
+            N=cls.N - cls.N // cls.h,
+            q=cls.moduli_boot[-2] ** 2,
+            sk_plus=cls.h - 1,
+            sk_minus=0,
+            check_primal_hybrid=check_primal_hybrid,
+        )
 
     @classmethod
     def config_PaCo(cls, sk, C, g0, g1, print_messages=False):
