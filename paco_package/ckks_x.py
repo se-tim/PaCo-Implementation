@@ -48,7 +48,6 @@ class CKKS_x(CKKS):
             print_messages (bool, optional):
                 Whether to print information messages. Defaults to False.
         """
-
         if h is not None and h & (h - 1) != 0:
             raise ValueError("h must be a power of two.")
         if h is None:
