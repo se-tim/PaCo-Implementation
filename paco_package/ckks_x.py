@@ -51,7 +51,7 @@ class CKKS_x(CKKS):
         if h is not None and h & (h - 1) != 0:
             raise ValueError("h must be a power of two.")
         if h is None:
-            h = 2 ** min(6, 2 ** (log(cls.N, 2) // 2))
+            h = 2 ** min(6, int(log(cls.N, 2) // 2))
 
         # Generate the PaCo secret key (skGen in paper)
 
