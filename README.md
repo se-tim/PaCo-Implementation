@@ -44,16 +44,16 @@ related to CKKS and the PaCo procedure:
    Make sure that this is initialized correctly,
    as described in the section [Installation](#installation).
   
-  - **`ckks_x.py`**:
+   - **`ckks_x.py`**:
    Implements the functionalities required for the PaCo procedure,
    building on the core CKKS operations.
 
-  - **`ext_bit_rev.py`**:
-  Implements functions related to extended bit-reversing.
+   - **`ext_bit_rev.py`**:
+   Implements functions related to extended bit-reversing.
 
-  - **`fast_dft_with_ext_bit_rev.py`**:
-  Provides the matrices required for the partial CoeffToSlot
-  and the conventional SlotToCoeff operations in the PaCo procedure.
+   - **`fast_dft_with_ext_bit_rev.py`**:
+   Provides the matrices required for the partial CoeffToSlot
+   and the conventional SlotToCoeff operations in the PaCo procedure.
 
 - **`benchmarks.py`**
 A script evaluating the performance of the PaCo procedure
