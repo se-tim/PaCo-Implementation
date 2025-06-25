@@ -17,11 +17,11 @@ if input("Use a parameter set from the paper (y / n)? ") == "y":
     set_number = int(input("Which parameter set (1 / 2)? "))
     N, q, p, delta, h, g, d, r = parameter_sets[set_number - 1]
 else:
-    N = 2 ** int(input("Ring degree: N = 2**"))
-    q = 2 ** int(input("Base modulus: q = 2**"))
-    p = 2 ** int(input("Scaling factor outside of bootstrapping: p = 2**"))
-    delta = 2 ** int(input("Scaling factor during bootstrapping: delta = 2**"))
-    h = 2 ** int(input("Hamming weight of secret key: h = 2**"))
+    N = 2 ** int(input("Ring degree: N = 2^"))
+    q = 2 ** int(input("Base modulus: q = 2^"))
+    p = 2 ** int(input("Scaling factor outside of bootstrapping: p = 2^"))
+    delta = 2 ** int(input("Scaling factor during bootstrapping: delta = 2^"))
+    h = 2 ** int(input("Hamming weight of secret key: h = 2^"))
     g = int(input("Grouping parameter for CoeffToSlot and SlotToCoeff: g = "))
     d = int(input("Degree for Taylor polynomial in EvalMod: d = "))
     r = int(input("Number of successive squarings in EvalMod: r = "))
