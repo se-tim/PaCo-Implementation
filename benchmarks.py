@@ -91,11 +91,12 @@ if input("Test sequential or parallel bootstrapping (s / p)? ") == "s":
             ct_boot = ct.bootstrap()
             t_end = time.time()
             t = f"{float(round(t_end - t_start, 2))} s"
-            print(f"| {t:^12} ", flush=True)
+            print(f"| {t:^12} ", end="", flush=True)
             if log_C == log_B:
                 precision_orig += (
                     ct.get_precision(ct_boot, CKKS.sk) / num_tests
                 )
+        print()
     print()
     print(f"PaCo precision: {float(round(precision_paco, 2))} bits.")
     print(f"Original precision: {float(round(precision_orig, 2))} bits.")
