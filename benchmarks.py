@@ -1,6 +1,6 @@
-from sage.all import ceil, log, randint
+from sage.all import ceil, log
 import time
-from paco_package.ckks_x import CKKS, CKKS_x, Poly
+from paco_package.ckks_x import CKKS, CKKS_x
 
 # Configuration
 
@@ -59,11 +59,7 @@ if input("Test sequential or parallel bootstrapping (s / p)? ") == "s":
         CKKS_x.config_PaCo(CKKS_x.sk, C, g, g)
         precision_paco = 0
         for _ in range(num_tests):
-            coeffs = [
-                randint(-p, p) if i % (N // C) == 0 else 0 for i in range(N)
-            ]
-            m = Poly(coeffs, N)
-            ct = CKKS_x.enc_poly_with_sk(m, CKKS_x.sk) % q
+            ct = CKKS_x.get_random_ciphertext(CKKS_x.sk, C // 2) % q
             t_start = time.time()
             ct_boot = ct.seq_PaCo()
             t_end = time.time()
@@ -82,11 +78,7 @@ if input("Test sequential or parallel bootstrapping (s / p)? ") == "s":
         CKKS.config_bootstrap(CKKS.sk, d, r, g)
         precision_orig = 0
         for _ in range(num_tests):
-            coeffs = [
-                randint(-p, p) if i % (N // C) == 0 else 0 for i in range(N)
-            ]
-            m = Poly(coeffs, N)
-            ct = CKKS.enc_poly_with_sk(m, CKKS.sk) % q
+            ct = CKKS.get_random_ciphertext(CKKS.sk, C // 2) % q
             t_start = time.time()
             ct_boot = ct.bootstrap()
             t_end = time.time()
@@ -130,11 +122,7 @@ else:
         CKKS_x.key_gen(h)
         CKKS_x.config_PaCo(CKKS_x.sk, C, g, g)
         for _ in range(num_tests):
-            coeffs = [
-                randint(-p, p) if i % (N // D) == 0 else 0 for i in range(N)
-            ]
-            m = Poly(coeffs, N)
-            ct = CKKS_x.enc_poly_with_sk(m, CKKS_x.sk) % q
+            ct = CKKS_x.get_random_ciphertext(CKKS_x.sk, D // 2) % q
             ct_boot, t = ct.parallel_PaCo(kappa, get_time=True)
             t = f"{float(round(t, 2))} s"
             print(f"| {t:^12} ", end="", flush=True)
@@ -146,11 +134,7 @@ else:
         CKKS.key_gen(h)
         CKKS.config_bootstrap(CKKS.sk, d, r, g)
         for _ in range(num_tests):
-            coeffs = [
-                randint(-p, p) if i % (N // D) == 0 else 0 for i in range(N)
-            ]
-            m = Poly(coeffs, N)
-            ct = CKKS.enc_poly_with_sk(m, CKKS.sk) % q
+            ct = CKKS.get_random_ciphertext(CKKS.sk, D // 2) % q
             t_start = time.time()
             ct_boot = ct.bootstrap()
             t_end = time.time()
