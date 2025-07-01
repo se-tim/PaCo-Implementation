@@ -64,7 +64,7 @@ against the original bootstrapping procedure.
 The `benchmarks.py` script compares the performance of the PaCo procedure
 with the original CKKS bootstrapping procedure:
 
-1. **Parameter selection**:  
+1. **Parameter selection**:
    Choose between predefined parameter sets (from the paper [1])
    or input custom parameters.
    Further,
