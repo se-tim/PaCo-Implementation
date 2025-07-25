@@ -207,12 +207,14 @@ class CKKS_x(CKKS):
             -(5**cls.C), sk, cls.moduli_boot[-2], cls.P
         )  # For conjugation with rotation by C slots
         rotation_indices = [
-            2**i for i in range(log(cls.N, 2))
+            2**i for i in range(log(cls.C // 2, 2), log(cls.N // 2, 2))
         ]  # For rotation by powers of two
         for poly_matrix in cls.grouped_poly_iE_list + cls.grouped_poly_E_list:
             rotation_indices += cls.get_BSGS_rotation_indices(poly_matrix)
         for i in rotation_indices:
-            cls.get_galois_swk(5**i, sk, cls.moduli_boot[-2], cls.P)
+            cls.get_galois_swk(
+                5 ** (i % cls.n), sk, cls.moduli_boot[-2], cls.P
+            )
 
         if print_messages:
             print("The PaCo bootstrapping configuration is done!")
