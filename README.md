@@ -90,6 +90,6 @@ Results will be printed directly to the terminal.
 
 ## References
 
-1. Jean-Sébastien Coron and Tim Seuré.
-PaCo: Bootstrapping for CKKS via Partial CoeffToSlot, 2025.
-https://eprint.iacr.org/2025/886.
+1. Jean-Sébastien Coron and Tim Seuré.  
+*PaCo: Bootstrapping for CKKS via Partial CoeffToSlot*.  
+In *Advances in Cryptology -- ASIACRYPT 2025*. Springer, 2026.
